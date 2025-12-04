@@ -1,13 +1,11 @@
 'use client'
 import { FunctionComponent, use, useEffect, useState } from "react";
 import { Title } from "./title";
-import FilterCheckbox from "./FilterCheckbox";
 import { Input } from "../ui/input";
 import { RangeSlider } from "./range-slider";
 import CheckboxFiltersGroup from "./checkbox-filters-group";
 import { useFilters, useIngredients, useQueryFilters } from "../../../hooks/index";
-import { search } from "../../../services/products";
-import { useRouter } from "next/navigation";
+
 
 
 
@@ -19,7 +17,6 @@ interface FiltersProps {
  const Filters: React.FC<FiltersProps> = ({ className }) => {
 
    const filters = useFilters()
-   //const {setPizzaTypes, setSelectedIngredients, setSizes, setPrices, pizzaTypes, sizes, prices, selectedIngredients} = useFilters()
    const {ingredients, loading} = useIngredients()
 
    useQueryFilters(filters)

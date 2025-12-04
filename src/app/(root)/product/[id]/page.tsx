@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { prisma } from "../../../../prisma/prisma-client";
+import { prisma } from "../../../../../prisma/prisma-client";
 import { Container } from "@/components/shared/container";
 import ProductImage from "@/components/shared/product-image";
 import { Title } from "@/components/shared/title";
