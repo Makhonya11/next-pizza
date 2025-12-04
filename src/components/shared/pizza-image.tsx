@@ -2,13 +2,13 @@ import { cn } from "@/lib/utils";
 import { FunctionComponent } from "react";
 
 
-interface ProductImageProps {
+interface PizzaImageProps {
     className: string
     imageUrl: string
-    size: number
+    size: 20 | 30 | 40
 }
  
- const ProductImage: FunctionComponent<ProductImageProps> = ({className, size, imageUrl}) => {
+ const PizzaImage: FunctionComponent<PizzaImageProps> = ({className, size, imageUrl}) => {
     return ( 
            <div className={cn('flex items-center justify-center flex-1 relative w-full', className)}>
       <img
@@ -27,4 +27,4 @@ interface ProductImageProps {
      );
 }
  
-export default ProductImage;
+export default PizzaImage;

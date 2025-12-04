@@ -6,16 +6,21 @@ import { FunctionComponent } from "react";
 import { Title } from "../title";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
+import { ProductWithRelations } from "../../../../@types/prisma";
+import ChoosePizzaForm from "../choose-pizza-form";
+import ChooseProductForm from "../choose-product-form";
 
 
 interface ChooseProductModalProps {
-    product: Product
+    product: ProductWithRelations
     className: string
 }
  
 const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({product, className}) => {
 
     const router = useRouter()
+
+    const isPizzaForm = Boolean(product.items[0].pizzaType)
     return ( 
         <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
             <DialogContent 
@@ -23,9 +28,11 @@ const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({product
           'p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden',
           className,
         )}>
-                <Title>
-                    {product.name}
-                </Title>
+            {isPizzaForm ? (
+                <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={[]}/>
+            ) : (
+                <ChooseProductForm imageUrl={product.imageUrl} name={product.name} ingredients={[]}/>
+            )}
             </DialogContent>
         </Dialog>
      );

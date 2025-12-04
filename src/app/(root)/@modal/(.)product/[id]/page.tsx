@@ -20,7 +20,6 @@ import ChooseProductModal from "@/components/shared/modals/choose-modal-product"
         }
     })
     
-    console.log(product)
     if(!product) {
         return notFound()
     }
