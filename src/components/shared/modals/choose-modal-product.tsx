@@ -29,7 +29,7 @@ const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({product
           className,
         )}>
             {isPizzaForm ? (
-                <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={[]}/>
+                <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={product.ingredients} items={product.items}/>
             ) : (
                 <ChooseProductForm imageUrl={product.imageUrl} name={product.name} ingredients={[]}/>
             )}
