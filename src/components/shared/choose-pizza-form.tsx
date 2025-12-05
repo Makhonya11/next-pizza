@@ -8,9 +8,12 @@ import { Button } from "../ui/button";
 import { Title } from "./title";
 import PizzaImage from "./pizza-image";
 import GroupVariants from "./group-variants";
-import { mapPizzaType, pizzaSizes, pizzaTypes } from "../../../constants/pizza";
+import { mapPizzaType, PizzaSize, pizzaSizes, pizzaTypes } from "../../../constants/pizza";
 import IngredientItem from "./ingredient-item";
 import { useSet } from "react-use";
+import usePizzaOptions from "../../../hooks/use-pizza-options";
+import { calcTotalPizzaPrice } from "@/lib/calc-total-pizza-price";
+import { getPizzaDetails } from "@/lib/get-pizza-details";
 
 
 interface ChoosePizzaFormProps {
@@ -32,37 +35,24 @@ const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
     className
 }) => {
 
-    const [size, setSize] = useState(20);
-    const [type, setType] = useState(1);   
-    const textDetails =  `${size} см, ${mapPizzaType[type]} пицца`
-    
-    const pizzaPrice = items.find(item => item.size === size && item.pizzaType === type)?.price
-    
-    const [selectedIngredients, {toggle: addIngredient}] = useSet(new Set([]))
-    
-    const totalIngredientsPrice = ingredients.filter(ing => selectedIngredients.has(ing.id)).reduce((acc, ing) => acc +ing.price, 0)
-    const totalPrice = pizzaPrice + totalIngredientsPrice
+  
+   
+    const { size,
+    type,
+    selectedIngredients,
+    availableSizes,
+    currentItemId,
+    setSize,
+    setType,
+    addIngredient,} = usePizzaOptions(items)
+
+    const {totalPrice, textDetails} = getPizzaDetails( type, size, items, ingredients, selectedIngredients)
 
     const handleClickAdd = () => {
         onClickAddCart?.()
         console.log({size, type, ingredients: selectedIngredients})
     }
 
-    const availablePizzas = items.filter(item => item.pizzaType === type)
-    const availablePizzaSizes = pizzaSizes.map(item => ({
-        name: item.name,
-        value: item.value,
-        disabled: !availablePizzas.some(pizza => pizza!.size === Number(item.value))
-    }))
-
-    useEffect(() => {
-        const availableSize = availablePizzaSizes?.find(item => !item.disabled)
-        const isAvailableSize = availablePizzas.some(pizza => pizza!.size === size)
-        if (availableSize && !isAvailableSize) {
-            setSize(+availableSize.value)
-
-        }
-    }, [type]);
     
 
     
@@ -76,9 +66,9 @@ const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
                 
                 <div className="flex flex-col gap-4 mt-5">
                 <GroupVariants 
-                items={availablePizzaSizes} 
+                items={availableSizes} 
                 selectedValue={String(size)}
-                onClick={(value) => setSize(Number(value))}
+                onClick={(value) => setSize(Number(value) as PizzaSize)}
                 />
                 <GroupVariants 
                 items={pizzaTypes} 
