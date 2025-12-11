@@ -13,8 +13,16 @@ import {
 import { CartDrawerItem } from './cart-drawer-item';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { useCart } from '../../../hooks/use-cart';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
+   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+
+    const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
+    const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
@@ -29,6 +37,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
               </SheetTitle>
             </SheetHeader>
 
+              {totalAmount > 0 && (
               <div className="-mx-6 mt-5 overflow-auto flex-1">
 
                   <div className="mb-2">
@@ -40,61 +49,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                       quantity={1}
                     />
                   </div>
-                  <div className="mb-2">
-                    <CartDrawerItem
-                      id={1}
-                      imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp"
-                      name="Чизбургер-пицца"
-                      price={500}
-                      quantity={1}
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <CartDrawerItem
-                      id={1}
-                      imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp"
-                      name="Чизбургер-пицца"
-                      price={500}
-                      quantity={1}
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <CartDrawerItem
-                      id={1}
-                      imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp"
-                      name="Чизбургер-пицца"
-                      price={500}
-                      quantity={1}
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <CartDrawerItem
-                      id={1}
-                      imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp"
-                      name="Чизбургер-пицца"
-                      price={500}
-                      quantity={1}
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <CartDrawerItem
-                      id={1}
-                      imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp"
-                      name="Чизбургер-пицца"
-                      price={500}
-                      quantity={1}
-                    />
-                  </div>
-                  <div className="mb-2">
-                    <CartDrawerItem
-                      id={1}
-                      imageUrl="https://media.dodostatic.net/image/r:292x292/11EE7D610BBEB562BD4D48786AD87270.webp"
-                      name="Чизбургер-пицца"
-                      price={500}
-                      quantity={1}
-                    />
-                  </div>
               </div>
+              )}
 
               <SheetFooter className="-mx-6 bg-white p-8">
                 <div className="w-full">
