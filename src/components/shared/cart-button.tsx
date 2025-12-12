@@ -5,22 +5,26 @@ import { Button } from "../ui/button";
 import { ArrowRight, ShoppingCart } from "lucide-react";
 import { CartDrawer } from "./cart-drawer";
 import { cn } from "@/lib/utils";
+import { useCartStore } from "../../../store/cart";
+import { useCart } from "../../../hooks/use-cart";
+
 
 interface CartButtonProps {
     className: string
 }
  
 const CartButton: FunctionComponent<CartButtonProps> = ({className}) => {
+    const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
     return ( 
         <CartDrawer>
       <Button
-        //loading={}
+        //loading={loading}
         className={cn('group relative', className)}>
-        <b>{3} ₽</b>
+        <b>{totalAmount} ₽</b>
         <span className="h-full w-[1px] bg-white/30 mx-3" />
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
           <ShoppingCart size={16} className="relative" strokeWidth={2} />
-          <b>3</b>
+          <b>{items.length}</b>
         </div>
         <ArrowRight
           size={20}

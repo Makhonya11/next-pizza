@@ -33,7 +33,7 @@ export const PATCH = async(req:NextRequest, {params}: {params: {id:string}}) => 
             }
         })
 
-        const updateUserCart = updateCartTotalAmount(token)
+        const updateUserCart = await updateCartTotalAmount(token)
 
         return NextResponse.json(updateUserCart)
 

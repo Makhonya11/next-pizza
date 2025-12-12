@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { ProductWithRelations } from "../../../../@types/prisma";
 import ChoosePizzaForm from "../choose-pizza-form";
 import ChooseProductForm from "../choose-product-form";
+import { useCartStore } from "../../../../store/cart";
 
 
 interface ChooseProductModalProps {
@@ -21,6 +22,14 @@ const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({product
     const router = useRouter()
 
     const isPizzaForm = Boolean(product.items[0].pizzaType)
+    const addCartItem = useCartStore((state) => state.addCartItem)
+
+    const onAddProduct = () => {
+        addCartItem({
+            productItemId: ,
+            ingredients: 
+        })
+    }
     return ( 
         <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
             <DialogContent 

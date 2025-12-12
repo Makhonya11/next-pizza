@@ -30,8 +30,9 @@ export const GET = async(req:NextRequest) => {
     })
 
     return NextResponse.json(usercart)
-    } catch (e) {
-        console.log(e)
+    } catch (error) {
+         console.log('[CART_GET] Server error', error);
+    return NextResponse.json({ message: 'Не удалось получить корзину' }, { status: 500 });
     }
 }
 
