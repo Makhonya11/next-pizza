@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import {
   Sheet,
   SheetClose,
@@ -11,11 +12,13 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { CartDrawerItem } from './cart-drawer-item';
-import { ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { useCart } from '../../../hooks/use-cart';
 import { getCartItemDetails } from '@/lib/get-cart-item-details';
 import { PizzaSize, PizzaType } from '../../../constants/pizza';
+import { Title } from './title';
+import { cn } from '@/lib/utils';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
    const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
@@ -30,14 +33,32 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
       <SheetTrigger asChild>{children}</SheetTrigger>
 
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#F4F1EE]">
-        <div className='flex flex-col flex-grow h-full'>
+        <div className={cn('flex flex-col h-full', !totalAmount && 'justify-center')}>
 
-            <SheetHeader>
+           { totalAmount > 0 &&  
+           <SheetHeader>
 
               <SheetTitle>
                 В корзине <span className="font-bold">{items.length} товара</span>
               </SheetTitle>
-            </SheetHeader>
+            </SheetHeader>}
+
+             {!totalAmount && (
+            <div className="flex flex-col items-center justify-center w-72 mx-auto">
+              <Image src="/assets/images/empty-box.png" alt="Empty cart" width={120} height={120} />
+              <Title size="sm" text="Корзина пустая" className="text-center font-bold my-2" />
+              <p className="text-center text-neutral-500 mb-5">
+                Добавьте хотя бы одну пиццу, чтобы совершить заказ
+              </p>
+
+              <SheetClose>
+                <Button className="w-56 h-12 text-base" size="lg">
+                  <ArrowLeft className="w-5 mr-2" />
+                  Вернуться назад
+                </Button>
+              </SheetClose>
+            </div>
+          )}
 
               {totalAmount > 0 && (
                 

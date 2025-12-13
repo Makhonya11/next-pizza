@@ -1,7 +1,7 @@
 import { StepBackIcon } from "lucide-react"
 import { useSearchParams } from "next/navigation"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import { useSet } from "react-use"
 
 interface PriceProps {
@@ -53,15 +53,15 @@ export const useFilters = (): ReturnProps => {
      }
    
 
-   return {
-    sizes,
-    prices,
-    pizzaTypes,
-    selectedIngredients,
-    setSelectedIngredients: toggleIngredients,
-    setPrices: updatePrice,
-    setPizzaTypes: togglePizzaTypes,
-    setSizes: toggleSizes
-   }
+   return useMemo(() => ({
+     sizes,
+     prices,
+     pizzaTypes,
+     selectedIngredients,
+     setSelectedIngredients: toggleIngredients,
+     setPrices: updatePrice,
+     setPizzaTypes: togglePizzaTypes,
+     setSizes: toggleSizes
+   }), [sizes, prices,pizzaTypes,selectedIngredients,])  
 }
 

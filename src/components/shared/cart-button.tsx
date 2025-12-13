@@ -14,11 +14,11 @@ interface CartButtonProps {
 }
  
 const CartButton: FunctionComponent<CartButtonProps> = ({className}) => {
-    const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+    const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart();
     return ( 
         <CartDrawer>
       <Button
-        //loading={loading}
+        loading={loading}
         className={cn('group relative', className)}>
         <b>{totalAmount} ₽</b>
         <span className="h-full w-[1px] bg-white/30 mx-3" />

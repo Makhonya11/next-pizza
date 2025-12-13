@@ -5,14 +5,17 @@ import ProductCard from "./product-card";
 import { cn } from "@/lib/utils";
 import {useIntersection} from 'react-use'
 import { useCategoryStore } from "../../../store/category";
+import { Product } from "@prisma/client";
+import { ProductWithRelations } from "../../../@types/prisma";
 
 
 interface ProductGroupListProps {
   title: string;
-  items: any[];
+  items: ProductWithRelations[];
   className?: string;
   listClassName?: string;
   categoryId: number;
+
 }
  
 const ProductGroupList: FunctionComponent<ProductGroupListProps> = ({title, items, categoryId, className, listClassName}) => {
@@ -42,7 +45,8 @@ const ProductGroupList: FunctionComponent<ProductGroupListProps> = ({title, item
                       id={product.id}
                       name={product.name}
                       imageUrl={product.imageUrl}
-                      price={product.items[0].price}/>
+                      price={product.items[0].price}
+                      ingredients={product.ingredients}/>
                     ))
                 }
             </div>

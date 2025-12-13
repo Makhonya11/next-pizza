@@ -10,19 +10,20 @@ interface ChooseProductFormProps {
   ingredients: any[];
   items?: any[];
   loading?: boolean;
-  onClickAdd?: VoidFunction;
+  onSubmit?: VoidFunction;
+  price: number
   className?: string;
 }
  
 const ChooseProductForm: FunctionComponent<ChooseProductFormProps> = ({
     name,
     imageUrl,
-    onClickAdd,
+    onSubmit,
+    price,
+    loading,
     className
 }) => {
 
-    const textDetails = '30 см, трад тесто 30'
-    const totalPrice = 350
     return ( 
         <div className={cn(className, 'flex flex-1')}>
              <div className={cn('flex items-center justify-center flex-1 relative w-full', className)}>
@@ -36,9 +37,11 @@ const ChooseProductForm: FunctionComponent<ChooseProductFormProps> = ({
 
             <div className="w-[490px] bg-[#f7f6f5] p-7">
                 <Title text={name} size='md' className='font-extrabold mb-1' />
-                <p className="text-gray-400">{textDetails}</p>
-                <Button className="h-[55px] px-10 text-base rounded-[18px] w-full">
-                    Добавить в корзину за {totalPrice}
+                <Button 
+                loading={loading} 
+                onClick={() => onSubmit?.()} 
+                className="h-[55px] px-10 text-base rounded-[18px] w-full">
+                    Добавить в корзину за {price}
                 </Button>
             </div>
 

@@ -22,7 +22,7 @@ interface ChoosePizzaFormProps {
   ingredients: any[];
   items: ProductItem[];
   loading?: boolean;
-  onClickAddCart?: VoidFunction;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
   className?: string;
 }
  
@@ -31,13 +31,15 @@ const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
     items,
     imageUrl,
     ingredients,
-    onClickAddCart,
+    onSubmit,
+    loading,
     className
 }) => {
 
   
    
-    const { size,
+    const { 
+    size,
     type,
     selectedIngredients,
     availableSizes,
@@ -49,8 +51,10 @@ const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
     const {totalPrice, textDetails} = getPizzaDetails( type, size, items, ingredients, selectedIngredients)
 
     const handleClickAdd = () => {
-        onClickAddCart?.()
-        console.log({size, type, ingredients: selectedIngredients})
+        if (currentItemId) {
+            onSubmit(currentItemId, Array.from(selectedIngredients))
+        }
+
     }
 
     
@@ -93,6 +97,7 @@ const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
                </div>
                 </div>
                 <Button 
+                loading={loading}
                 onClick={handleClickAdd}
                 className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
                     Добавить в корзину за {totalPrice} $
