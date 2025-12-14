@@ -14,7 +14,7 @@ interface FiltersProps {
 }
 
  
- const Filters: React.FC<FiltersProps> = ({ className }) => {
+ export const Filters: React.FC<FiltersProps> = ({ className }) => {
 
    const filters = useFilters()
    const {ingredients, loading} = useIngredients()

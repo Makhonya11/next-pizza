@@ -8,7 +8,7 @@ interface PizzaImageProps {
     size: 20 | 30 | 40
 }
  
- const PizzaImage: FunctionComponent<PizzaImageProps> = ({className, size, imageUrl}) => {
+ export const PizzaImage: FunctionComponent<PizzaImageProps> = ({className, size, imageUrl}) => {
     return ( 
            <div className={cn('flex items-center justify-center flex-1 relative w-full', className)}>
       <img

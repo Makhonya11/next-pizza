@@ -18,7 +18,7 @@ interface ProductGroupListProps {
 
 }
  
-const ProductGroupList: FunctionComponent<ProductGroupListProps> = ({title, items, categoryId, className, listClassName}) => {
+export const ProductGroupList: FunctionComponent<ProductGroupListProps> = ({title, items, categoryId, className, listClassName}) => {
     const intersectionref = useRef(null)
     const intersection = useIntersection(intersectionref, {
         threshold: 0.4,

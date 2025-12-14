@@ -17,7 +17,7 @@ interface GroupVariantsProps {
     className: string
 }
  
-const GroupVariants: FunctionComponent<GroupVariantsProps> = ({className, items, onClick, selectedValue}) => {
+export const GroupVariants: FunctionComponent<GroupVariantsProps> = ({className, items, onClick, selectedValue}) => {
     return ( 
         <div
         className={cn(

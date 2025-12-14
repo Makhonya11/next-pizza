@@ -10,7 +10,7 @@ interface TopBarProps {
     className:string
 }
  
-const TopBar: FunctionComponent<TopBarProps> = ({className, categories}) => {
+export const TopBar: FunctionComponent<TopBarProps> = ({className, categories}) => {
     return (
         <div className={cn('sticky top-0 db-white py-5 shadow-lg shadow-black/5 z-10', className)}>
         <Container className="flex items-center justify-between">

@@ -26,7 +26,7 @@ interface ChoosePizzaFormProps {
   className?: string;
 }
  
-const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
+export const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
     name,
     items,
     imageUrl,

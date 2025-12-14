@@ -12,7 +12,7 @@ interface IngredientItemProps {
     onClick: () => void
 }
  
-const IngredientItem: FunctionComponent<IngredientItemProps> = ({
+export const IngredientItem: FunctionComponent<IngredientItemProps> = ({
     className,
     active,
     price,

@@ -13,7 +13,7 @@ interface CartButtonProps {
     className: string
 }
  
-const CartButton: FunctionComponent<CartButtonProps> = ({className}) => {
+export const CartButton: FunctionComponent<CartButtonProps> = ({className}) => {
     const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart();
     return ( 
         <CartDrawer>

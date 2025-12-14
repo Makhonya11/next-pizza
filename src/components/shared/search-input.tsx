@@ -13,7 +13,7 @@ interface SeaqrchInputProps {
     className?: string
 }
  
-export const SeaqrchInput: FunctionComponent<SeaqrchInputProps> = ({className}) => {
+export const SearchInput: FunctionComponent<SeaqrchInputProps> = ({className}) => {
 
     const [focused, setFocused] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -86,4 +86,4 @@ export const SeaqrchInput: FunctionComponent<SeaqrchInputProps> = ({className}) 
      );
 }
  
-export default SeaqrchInput;
+export default SearchInput;

@@ -16,7 +16,7 @@ interface ProductFormProps {
   onSubmit?: VoidFunction;
 }
  
-const ProductForm: FunctionComponent<ProductFormProps> = ({product, onSubmit: _onSubmit}) => {
+export const ProductForm: FunctionComponent<ProductFormProps> = ({product, onSubmit: _onSubmit}) => {
 
     const {addCartItem, loading} = useCart()
 

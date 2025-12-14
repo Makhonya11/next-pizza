@@ -15,7 +15,7 @@ interface ChooseProductFormProps {
   className?: string;
 }
  
-const ChooseProductForm: FunctionComponent<ChooseProductFormProps> = ({
+export const ChooseProductForm: FunctionComponent<ChooseProductFormProps> = ({
     name,
     imageUrl,
     onSubmit,

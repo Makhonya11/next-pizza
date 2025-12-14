@@ -20,7 +20,7 @@ interface ChooseProductModalProps {
     className: string
 }
  
-const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({product, className}) => {
+export const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({product, className}) => {
 
     const router = useRouter()
 

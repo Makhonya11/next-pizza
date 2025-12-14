@@ -15,7 +15,7 @@ interface ProductCardProps {
 }
  
 
-const ProductCard: FunctionComponent<ProductCardProps> = ({id, name, price, imageUrl, className, ingredients}) => {
+export const ProductCard: FunctionComponent<ProductCardProps> = ({id, name, price, imageUrl, className, ingredients}) => {
     return ( 
         <div >
             <Link href={`/product/${id}`}>

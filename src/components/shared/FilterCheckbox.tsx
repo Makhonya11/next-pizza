@@ -11,7 +11,7 @@ export interface FilterChecboxProps {
   name:string;
 }
 
- const FilterCheckbox: React.FC<FilterChecboxProps> = ({
+ export const FilterCheckbox: React.FC<FilterChecboxProps> = ({
   text,
   value,
   endAdornment,

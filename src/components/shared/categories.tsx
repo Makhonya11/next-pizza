@@ -12,7 +12,7 @@ interface Props {
 
 
 
-const Categories : FunctionComponent<Props> = ({items, className}) => {
+export const Categories : FunctionComponent<Props> = ({items, className}) => {
 
     const categoryActiveId = useCategoryStore((state) => state.activeId)
     return ( 

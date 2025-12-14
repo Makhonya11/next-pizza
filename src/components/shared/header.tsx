@@ -8,9 +8,9 @@ import Link from "next/link";
 import SearchInput from "./search-input";
 import CartButton from "./cart-button";
 
-export const Header = ({className}) => {
+export const Header = ({className, hasSearch}) => {
     return(
-        <header className={cn('border border -b', className)}>
+        <header className={cn('border-b', className)}>
             <Container className="flex items-center justify-between py-8">
                 <Link href={'/'}>
                 <div className="flex items-center gap-4">
@@ -22,9 +22,11 @@ export const Header = ({className}) => {
                 </div>
                 </Link>
 
+                {hasSearch && 
                 <div className="flex rounded-2xl flex-1 justify-between relative h-11">
                     <SearchInput/>
                 </div>
+                }
 
                 <div className="flex items-center gap-3">
                     <Button variant={'outline'} className="flex items-center gap-1">
