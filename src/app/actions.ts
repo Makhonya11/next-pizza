@@ -85,6 +85,15 @@ export const createOrder = async(data:CheckoutFormValues) => {
             throw new Error('Payment data not found')
         }
 
+        await prisma.order.update({
+            where: {
+                id: order.id
+            },
+            data: {
+                paymentId: paymentData.id
+            }
+        })
+
         const paymentUrl = paymentData.confirmation.confirmation_url
 
         await sendEmail(
