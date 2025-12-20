@@ -13,7 +13,7 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
       <Container className="mt-10">
         <Title text="Все пиццы" size="lg" className="font-extrabold" />
       </Container>
-      <TopBar categories={categories.filter((cat) => cat.products.length > 0)} />
+      <TopBar className='' categories={categories.filter((cat) => cat.products.length > 0)} />
 
       <Container className="pb-14 mt-10">
         <div className="flex gap-[60px]">

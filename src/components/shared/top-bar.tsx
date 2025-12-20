@@ -7,7 +7,7 @@ import { Category } from '@prisma/client';
 
 interface TopBarProps {
   categories: Category[];
-  className: string;
+  className?: string;
 }
 
 export const TopBar: FunctionComponent<TopBarProps> = ({ className, categories }) => {

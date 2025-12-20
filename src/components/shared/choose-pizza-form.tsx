@@ -56,7 +56,7 @@ export const ChoosePizzaForm: FunctionComponent<ChoosePizzaFormProps> = ({
             selectedValue={String(size)}
             onClick={(value) => setSize(Number(value) as PizzaSize)}
           />
-          <GroupVariants items={pizzaTypes} selectedValue={String(type)} onClick={(value) => setType(Number(value))} />
+          <GroupVariants items={pizzaTypes} selectedValue={String(type)} onClick={(value) => setType(Number(value)as 1 | 2)} />
 
           <div className="bg-gray-50 p-5 rounded-md h-[400px] overflow-auto scrollbar mt-5">
             <div className="grid grid-cols-3 gap-3">

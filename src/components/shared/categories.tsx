@@ -6,7 +6,7 @@ import { Category } from '@prisma/client';
 
 interface Props {
   items: Category[];
-  className: string;
+  className?: string;
 }
 
 export const Categories: FunctionComponent<Props> = ({ items, className }) => {

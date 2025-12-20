@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import { FunctionComponent } from 'react';
 
 interface PizzaImageProps {
-  className: string;
+  className?: string;
   imageUrl: string;
   size: 20 | 30 | 40;
 }

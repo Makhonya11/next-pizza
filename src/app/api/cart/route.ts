@@ -73,7 +73,7 @@ export const POST = async (req: NextRequest) => {
           productItemId: data.productItemId,
           quantity: 1,
           ingredients: {
-            connect: data.ingredients?.map((id) => ({ id })),
+            connect: data.ingredients?.map((id: number) => ({ id })),
           },
         },
       });

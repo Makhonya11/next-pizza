@@ -9,7 +9,7 @@ import ProductForm from '../product-form';
 
 interface ChooseProductModalProps {
   product: ProductWithRelations;
-  className: string;
+  className?: string;
 }
 
 export const ChooseProductModal: FunctionComponent<ChooseProductModalProps> = ({ product, className }) => {

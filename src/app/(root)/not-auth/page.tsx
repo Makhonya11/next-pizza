@@ -1,3 +1,4 @@
+'use client';
 import { InfoBlock } from '../../../components/shared/info-block';
 
 export default function UnauthorizedPage() {
@@ -9,5 +10,6 @@ export default function UnauthorizedPage() {
         imageUrl="/assets/images/lock.png"
       />
     </div>
+
   );
 }

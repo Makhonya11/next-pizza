@@ -13,7 +13,7 @@ interface GroupVariantsProps {
   items: readonly Variant[];
   onClick?: (value: Variant['value']) => void;
   selectedValue?: Variant['value'];
-  className: string;
+  className?: string;
 }
 
 export const GroupVariants: FunctionComponent<GroupVariantsProps> = ({ className, items, onClick, selectedValue }) => {

@@ -11,7 +11,13 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { AuthModal } from './modals/auth-modal/auth-modal';
 
-export const Header = ({ className, hasSearch }) => {
+interface Props {
+  hasSearch?: boolean;
+  hasCart?: boolean;
+  className?: string;
+}
+
+export const Header: React.FC<Props>  = ({ hasSearch = true, className }) => {
   const router = useRouter();
   const [openAuthModal, setOpenAuthModal] = useState(false);
 

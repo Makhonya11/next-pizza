@@ -3,7 +3,7 @@ import { CircleCheck } from 'lucide-react';
 import { FunctionComponent } from 'react';
 
 interface IngredientItemProps {
-  className: string;
+  className?: string;
   active: boolean;
   price: number;
   name: string;

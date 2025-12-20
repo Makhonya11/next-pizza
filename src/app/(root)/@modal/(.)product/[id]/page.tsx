@@ -19,7 +19,7 @@ const ProductModalPage = async ({ params: { id } }: { params: { id: string } }) 
     return notFound();
   }
 
-  return <ChooseProductModal product={product} />;
+  return <ChooseProductModal className='' product={product} />;
 };
 
 export default ProductModalPage;

@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { useCart } from '../../../hooks/use-cart';
 
 interface CartButtonProps {
-  className: string;
+  className?: string;
 }
 
 export const CartButton: FunctionComponent<CartButtonProps> = ({ className }) => {
