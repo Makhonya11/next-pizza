@@ -3,16 +3,15 @@ import React from 'react';
 interface Props {
   orderId: number;
   items: any[];
-
 }
 
 export const OrderSuccessTemplate: React.FC<Props> = ({ orderId, items }) => (
   <div>
-     <h1>Спасибо за покупку! 🎉</h1>
+    <h1>Спасибо за покупку! 🎉</h1>
 
-      <p>Ваш заказ #{orderId} оплачен. Список товаров:</p>
+    <p>Ваш заказ #{orderId} оплачен. Список товаров:</p>
 
-   <hr />
+    <hr />
 
     <ul>
       {items.map((item) => (

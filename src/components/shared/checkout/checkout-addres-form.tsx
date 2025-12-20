@@ -28,12 +28,7 @@ export const CheckoutAddressForm: React.FC<Props> = ({ className }) => {
           )}
         />
 
-        <FormTextarea
-          name="comment"
-          className="text-base"
-          placeholder="Комментарий к заказу"
-          rows={5}
-        />
+        <FormTextarea name="comment" className="text-base" placeholder="Комментарий к заказу" rows={5} />
       </div>
     </WhiteBlock>
   );

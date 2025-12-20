@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -33,7 +33,8 @@ export const CartDrawerItem: React.FC<Props> = ({
           'opacity-50 pointer-events-none': disabled,
         },
         className,
-      )}>
+      )}
+    >
       <CartItem.Image src={imageUrl} />
 
       <div className="flex-1">

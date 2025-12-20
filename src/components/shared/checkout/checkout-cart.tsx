@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { WhiteBlock } from '../whiteblock';
 import { CheckoutItem } from '../checkout-item';
@@ -15,13 +14,7 @@ interface Props {
   className?: string;
 }
 
-export const CheckoutCart: React.FC<Props> = ({
-  items,
-  onClickCountButton,
-  removeCartItem,
-  loading,
-  className,
-}) => {
+export const CheckoutCart: React.FC<Props> = ({ items, onClickCountButton, removeCartItem, loading, className }) => {
   return (
     <WhiteBlock title="1. Корзина" className={className}>
       <div className="flex flex-col gap-5">
@@ -32,11 +25,7 @@ export const CheckoutCart: React.FC<Props> = ({
                 key={item.id}
                 id={item.id}
                 imageUrl={item.imageUrl}
-                details={getCartItemDetails(
-                  item.ingredients,
-                  item.pizzaType as PizzaType,
-                  item.pizzaSize as PizzaSize,
-                )}
+                details={getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize)}
                 name={item.name}
                 price={item.price}
                 quantity={item.quantity}

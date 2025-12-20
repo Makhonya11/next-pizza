@@ -3,7 +3,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 
-import { prisma } from '@/prisma/prisma-client';
+import { prisma } from '../prisma/prisma-client';
 import { compare, hashSync } from 'bcrypt';
 import { UserRole } from '@prisma/client';
 
@@ -85,10 +85,7 @@ export const authOptions: AuthOptions = {
 
         const findUser = await prisma.user.findFirst({
           where: {
-            OR: [
-              { provider: account?.provider, providerId: account?.providerAccountId },
-              { email: user.email },
-            ],
+            OR: [{ provider: account?.provider, providerId: account?.providerAccountId }, { email: user.email }],
           },
         });
 

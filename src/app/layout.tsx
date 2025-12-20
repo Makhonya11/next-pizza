@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
-import "./globals.css";
-import {Toaster} from 'react-hot-toast'
+'use client';
+
+import { Nunito } from 'next/font/google';
+import './globals.css';
+import { Providers } from '@/components/shared/providers';
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -9,20 +10,18 @@ const nunito = Nunito({
   weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-   <html lang="en" className={nunito.className}>
-        <head>
-          <link data-rh='true' rel="icon" href="/logo.png" />
-        </head>
+    <html lang="en" className={nunito.className}>
+      <head>
+        <link data-rh="true" rel="icon" href="/logo.png" />
+      </head>
       <body className={nunito.className}>
-        {children}
-        <Toaster/>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

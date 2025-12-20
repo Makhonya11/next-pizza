@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 interface Props {
   description: string;
@@ -6,11 +6,10 @@ interface Props {
   amount: number;
 }
 
-export const createPayment = async (details: Props) => { 
-
-    const {data} = await axios.post(
-        'https://api.yookassa.ru/v3/payments',
-          {
+export const createPayment = async (details: Props) => {
+  const { data } = await axios.post(
+    'https://api.yookassa.ru/v3/payments',
+    {
       amount: {
         value: details.amount.toString(),
         currency: 'RUB',
@@ -35,7 +34,7 @@ export const createPayment = async (details: Props) => {
         'Idempotence-Key': Math.random().toString(36).substring(7),
       },
     },
-    )
+  );
 
-    return data
-}
+  return data;
+};

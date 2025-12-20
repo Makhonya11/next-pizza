@@ -1,37 +1,31 @@
-import { FunctionComponent, useEffect, useRef } from 'react';
-import {Filters} from './use-filter'
+import { useEffect, useRef } from 'react';
+import { Filters } from './use-filter';
 import qs from 'qs';
 import { useRouter } from 'next/navigation';
 
+export const useQueryFilters = (filters: Filters) => {
+  const isMounted = useRef(false);
+  const router = useRouter();
 
- 
-export const useQueryFilters = (filters:Filters) => {
+  useEffect(() => {
+    if (isMounted.current) {
+      const params = {
+        ...filters.prices,
+        pizzaTypes: Array.from(filters.pizzaTypes),
+        sizes: Array.from(filters.sizes),
+        ingredients: Array.from(filters.selectedIngredients),
+      };
+      const query = qs.stringify(params, {
+        arrayFormat: 'comma',
+      });
 
-        const isMounted = useRef(false)
-        const router = useRouter()
-        
-        useEffect(() => {
-            
-           if (isMounted.current) { 
-            const params = {
-            ...filters.prices,
-            pizzaTypes: Array.from(filters.pizzaTypes),
-            sizes: Array.from(filters.sizes),
-            ingredients: Array.from(filters.selectedIngredients),
-          }
-            const query = qs.stringify(params, {
-              arrayFormat: 'comma'
-            })
-        
-            router.push(`?${query}`, {
-              scroll: false
-            })
-          }
+      router.push(`?${query}`, {
+        scroll: false,
+      });
+    }
 
-            isMounted.current = true
+    isMounted.current = true;
+  }, [filters, router]);
+};
 
-          }, [filters,  router]);
-
-}
- 
 export default useQueryFilters;

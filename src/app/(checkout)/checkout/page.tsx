@@ -16,7 +16,6 @@ import { useCart } from '../../../../hooks/use-cart';
 import toast from 'react-hot-toast';
 import React from 'react';
 //import { useSession } from 'next-auth/react';
-import { Api } from '../../../../services/api-client';
 import { createOrder } from '@/app/actions';
 
 export default function CheckoutPage() {
@@ -36,20 +35,20 @@ export default function CheckoutPage() {
     },
   });
 
-//   React.useEffect(() => {
-//     async function fetchUserInfo() {
-//       const data = await Api.auth.getMe();
-//       const [firstName, lastName] = data.fullName.split(' ');
+  //   React.useEffect(() => {
+  //     async function fetchUserInfo() {
+  //       const data = await Api.auth.getMe();
+  //       const [firstName, lastName] = data.fullName.split(' ');
 
-//       form.setValue('firstName', firstName);
-//       form.setValue('lastName', lastName);
-//       form.setValue('email', data.email);
-//     }
+  //       form.setValue('firstName', firstName);
+  //       form.setValue('lastName', lastName);
+  //       form.setValue('email', data.email);
+  //     }
 
-//     if (session) {
-//       fetchUserInfo();
-//     }
-//   }, [session]);
+  //     if (session) {
+  //       fetchUserInfo();
+  //     }
+  //   }, [session]);
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
@@ -101,7 +100,7 @@ export default function CheckoutPage() {
 
             {/* Правая часть */}
             <div className="w-[450px]">
-              <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting}  />
+              <CheckoutSidebar totalAmount={totalAmount} loading={loading || submitting} />
             </div>
           </div>
         </form>

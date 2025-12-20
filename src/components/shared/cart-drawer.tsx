@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -21,9 +21,9 @@ import { Title } from './title';
 import { cn } from '@/lib/utils';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
-   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
+  const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
 
-    const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
+  const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
     updateItemQuantity(id, newQuantity);
   };
@@ -34,22 +34,19 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
 
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#F4F1EE]">
         <div className={cn('flex flex-col h-full', !totalAmount && 'justify-center')}>
-
-           { totalAmount > 0 &&  
-           <SheetHeader>
-
+          {totalAmount > 0 && (
+            <SheetHeader>
               <SheetTitle>
                 В корзине <span className="font-bold">{items.length} товара</span>
               </SheetTitle>
-            </SheetHeader>}
+            </SheetHeader>
+          )}
 
-             {!totalAmount && (
+          {!totalAmount && (
             <div className="flex flex-col items-center justify-center w-72 mx-auto">
               <Image src="/assets/images/empty-box.png" alt="Empty cart" width={120} height={120} />
               <Title size="sm" text="Корзина пустая" className="text-center font-bold my-2" />
-              <p className="text-center text-neutral-500 mb-5">
-                Добавьте хотя бы одну пиццу, чтобы совершить заказ
-              </p>
+              <p className="text-center text-neutral-500 mb-5">Добавьте хотя бы одну пиццу, чтобы совершить заказ</p>
 
               <SheetClose>
                 <Button className="w-56 h-12 text-base" size="lg">
@@ -60,12 +57,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
             </div>
           )}
 
-              {totalAmount > 0 && (
-                
-                <>
-                <div className="-mx-6 mt-5 overflow-auto flex-1">
-                 {items.map(item => (
-                
+          {totalAmount > 0 && (
+            <>
+              <div className="-mx-6 mt-5 overflow-auto flex-1">
+                {items.map((item) => (
                   <div key={item.id} className="mb-2">
                     <CartDrawerItem
                       id={item.id}
@@ -77,13 +72,13 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                       details={getCartItemDetails(
                         item.ingredients,
                         item.pizzaType as PizzaType,
-                        item.pizzaSize as PizzaSize
+                        item.pizzaSize as PizzaSize,
                       )}
                       onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
                       onClickRemove={() => removeCartItem(item.id)}
                     />
                   </div>
-              ))}
+                ))}
               </div>
 
               <SheetFooter className="-mx-6 bg-white p-8">
@@ -98,17 +93,15 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                   </div>
 
                   <Link href="/checkout">
-                    <Button
-                      type="submit"
-                      className="w-full h-12 text-base">
+                    <Button type="submit" className="w-full h-12 text-base">
                       Оформить заказ
                       <ArrowRight className="w-5 ml-2" />
                     </Button>
                   </Link>
                 </div>
               </SheetFooter>
-              </>
-                 )}
+            </>
+          )}
         </div>
       </SheetContent>
     </Sheet>

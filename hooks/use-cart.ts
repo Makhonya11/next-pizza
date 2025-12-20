@@ -3,7 +3,6 @@ import { CreateCartItemValues } from '../services/dto/cart.dto';
 import { useCartStore } from '../store/cart';
 import { CartStateItem } from '@/lib/get-cart-details';
 
-
 type ReturnProps = {
   totalAmount: number;
   items: CartStateItem[];

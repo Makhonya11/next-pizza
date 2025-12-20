@@ -1,4 +1,3 @@
-import { Cart } from './../../node_modules/.prisma/client/index.d';
 import { CartDTO } from '../../services/dto/cart.dto';
 import { calcCartItemTotalPrice } from './calc-cartItem-total-price';
 
@@ -19,8 +18,8 @@ interface ReturnProps {
   totalAmount: number;
 }
 
-export const getCartDetails = (data:CartDTO) => {
-    const items = data.items.map((item) => ({
+export const getCartDetails = (data: CartDTO): ReturnProps => {
+  const items = data.items.map((item) => ({
     id: item.id,
     quantity: item.quantity,
     name: item.productItem.product.name,
@@ -39,4 +38,4 @@ export const getCartDetails = (data:CartDTO) => {
     items,
     totalAmount: data.totalAmount,
   };
-}
+};

@@ -1,25 +1,21 @@
-'use client'
+'use client';
 
-import { FunctionComponent } from "react";
-import { Button } from "../ui/button";
-import { ArrowRight, ShoppingCart } from "lucide-react";
-import { CartDrawer } from "./cart-drawer";
-import { cn } from "@/lib/utils";
-import { useCartStore } from "../../../store/cart";
-import { useCart } from "../../../hooks/use-cart";
-
+import { FunctionComponent } from 'react';
+import { Button } from '../ui/button';
+import { ArrowRight, ShoppingCart } from 'lucide-react';
+import { CartDrawer } from './cart-drawer';
+import { cn } from '@/lib/utils';
+import { useCart } from '../../../hooks/use-cart';
 
 interface CartButtonProps {
-    className: string
+  className: string;
 }
- 
-export const CartButton: FunctionComponent<CartButtonProps> = ({className}) => {
-    const { totalAmount, updateItemQuantity, items, removeCartItem, loading } = useCart();
-    return ( 
-        <CartDrawer>
-      <Button
-        loading={loading}
-        className={cn('group relative', className)}>
+
+export const CartButton: FunctionComponent<CartButtonProps> = ({ className }) => {
+  const { totalAmount, items, loading } = useCart();
+  return (
+    <CartDrawer>
+      <Button loading={loading} className={cn('group relative', className)}>
         <b>{totalAmount} ₽</b>
         <span className="h-full w-[1px] bg-white/30 mx-3" />
         <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
@@ -32,7 +28,7 @@ export const CartButton: FunctionComponent<CartButtonProps> = ({className}) => {
         />
       </Button>
     </CartDrawer>
-     );
-}
- 
+  );
+};
+
 export default CartButton;

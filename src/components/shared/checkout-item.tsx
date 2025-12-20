@@ -31,7 +31,8 @@ export const CheckoutItem: React.FC<Props> = ({
           'opacity-50 pointer-events-none': disabled,
         },
         className,
-      )}>
+      )}
+    >
       <div className="flex items-center gap-5 flex-1">
         <CartItemDetails.Image src={imageUrl} />
         <CartItemDetails.Info name={name} details={details} />

@@ -1,19 +1,10 @@
-import { notFound } from "next/navigation";
-import { prisma } from "../../../../../prisma/prisma-client";
-import { Container } from "@/components/shared/container";
-import ProductImage from "@/components/shared/pizza-image";
-import { Title } from "@/components/shared/title";
-import GroupVariants from "@/components/shared/group-variants";
-import ProductForm from "@/components/shared/product-form";
-import { FunctionComponent } from "react";
+import { notFound } from 'next/navigation';
+import { prisma } from '../../../../../prisma/prisma-client';
+import { Container } from '@/components/shared/container';
+import ProductForm from '@/components/shared/product-form';
 
-
-
-
-
-export const ProductPage = async ({params:{id}} : {params:{id : string}}) => {
-
-    const product = await prisma.product.findFirst({
+export const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
+  const product = await prisma.product.findFirst({
     where: { id: Number(id) },
     include: {
       ingredients: true,
@@ -29,20 +20,16 @@ export const ProductPage = async ({params:{id}} : {params:{id : string}}) => {
       items: true,
     },
   });
-    
-    if(!product) {
-        return notFound()
-    }
 
-    return (  
+  if (!product) {
+    return notFound();
+  }
 
-        <Container className="flex flex-col my-10">
-            <ProductForm
-            product={product}
-            />
+  return (
+    <Container className="flex flex-col my-10">
+      <ProductForm product={product} />
+    </Container>
+  );
+};
 
-        </Container>
-    );
-}
- 
 export default ProductPage;
